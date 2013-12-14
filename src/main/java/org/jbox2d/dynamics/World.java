@@ -60,6 +60,9 @@ import org.jbox2d.dynamics.joints.Joint;
 import org.jbox2d.dynamics.joints.JointDef;
 import org.jbox2d.dynamics.joints.JointEdge;
 import org.jbox2d.dynamics.joints.PulleyJoint;
+import org.jbox2d.particles.ParticleGroup;
+import org.jbox2d.particles.ParticleGroupDef;
+import org.jbox2d.particles.ParticleSystem;
 import org.jbox2d.pooling.IDynamicStack;
 import org.jbox2d.pooling.IWorldPool;
 import org.jbox2d.pooling.arrays.Vec2Array;
@@ -1540,8 +1543,17 @@ public class World {
         break;
     }
   }
-}
+  
+  private final ParticleSystem particleSystem = new ParticleSystem(); 
 
+  public ParticleGroup createParticleGroup(ParticleGroupDef pd) {
+	  assert (isLocked() == false);
+		 if (isLocked()) {
+			 return null;
+		 }
+		 return particleSystem.createParticleGroup(pd);
+  }
+}
 
 class WorldQueryWrapper implements TreeCallback {
   public boolean treeCallback(int nodeId) {
