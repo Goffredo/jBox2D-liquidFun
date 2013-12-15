@@ -15,4 +15,12 @@ public class ParticleDef {
 		this.velocity = velocity;
 	}
 
+	public Vec2 getPosition() {
+		return position;
+	}
+
+	public Vec2 getVelocity() {
+		return velocity;
+	}
+
 }
